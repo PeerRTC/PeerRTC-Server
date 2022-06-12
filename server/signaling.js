@@ -12,7 +12,7 @@ function setConfig(c) {
 
 function addNewClient(client){
 	var id = null
-
+	
 	// prevent id duplicates
 	while(!id || clients.has(id)){
 		id = utils.uuidv4()
