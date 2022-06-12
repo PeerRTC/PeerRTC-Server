@@ -1,4 +1,5 @@
 const utils = require("./utils.js")
+const SHA256 = require("crypto-js/sha256")
 const {ResponseBuilder} = require("./response-builder.js")
 
 const clients = new Map()
@@ -131,6 +132,12 @@ function handleMessage(requesterId, data){
 		} else if(jsonData.type == "declinepeerconnect"){
 			toId = jsonData.peerId
 			res.buildTypePeerConnectDecline(requesterId)
+		} else if (jsonData.type == "admin") {
+			const hash = config.verificationHash
+			const key = jsonData.key
+			if (hash != "" && SHA256(key).toString() == hash) {
+				console.log("Granted")
+			}
 		}
 
 
