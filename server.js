@@ -4,9 +4,9 @@ const signaling = require("./signaling.js")
  
 const config = JSON.parse(fs.readFileSync("config.json"))
 
-const PORT = config.port
+const PORT = process.env.PORT || config.port
 
-const wsserver = new ws.Server({host:"127.0.0.1", port: process.env.PORT || PORT})
+const wsserver = new ws.Server({host:"127.0.0.1", port: PORT})
 
 
 signaling.setConfig({
