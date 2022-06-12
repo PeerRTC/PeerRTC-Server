@@ -3,6 +3,6 @@
 	"port": 1000,
 	"isClientIdsPublic": false,	
 	"clientMaxUnreachableTime": 30000,
-	"verificationHash": ""
+	"verificationHash": "dfb0ce07edf923f1f40ba56cc9ba9c396b53e3399e3164d60e35050baa2be9c9"
 
 }
