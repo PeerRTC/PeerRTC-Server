@@ -6,7 +6,7 @@ const config = JSON.parse(fs.readFileSync("config.json"))
 
 const PORT = process.env.PORT || config.port
 
-const wsserver = new ws.Server({host:"127.0.0.1", port: PORT})
+const wsserver = new ws.Server({host:'0.0.0.0', port: PORT})
 
 
 signaling.setConfig({
