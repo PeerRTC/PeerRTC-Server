@@ -1,4 +1,4 @@
-const utils = require("./utils")
+const utils = require("./utils.js")
 
 class ResponseBuilder{
 	static RES_TYPE_INITIAL = "initial"

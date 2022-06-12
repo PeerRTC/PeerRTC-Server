@@ -1,5 +1,5 @@
-const utils = require("./utils")
-const {ResponseBuilder} = require("./response-builder")
+const utils = require("./utils.js")
+const {ResponseBuilder} = require("./response-builder.js")
 
 const clients = new Map()
 

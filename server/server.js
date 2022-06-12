@@ -2,7 +2,7 @@ const ws = require("ws")
 const fs = require("fs")
 const signaling = require("./signaling.js")
  
-const config = JSON.parse(fs.readFileSync("config.json"))
+const config = JSON.parse(fs.readFileSync("./server/config.json"))
 
 const PORT = process.env.PORT || config.port
 const HOST = config.host
