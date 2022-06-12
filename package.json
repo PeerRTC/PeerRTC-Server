@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ShimShim27/PeerRTC-Server/issues"
   },
-  "homepage": "https://github.com/ShimShim27/PeerRTC-Server#readme"
+  "homepage": "https://github.com/ShimShim27/PeerRTC-Server#readme",
+  "dependencies": {
+    "ws": "^8.8.0"
+  }
 }
