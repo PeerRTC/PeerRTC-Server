@@ -17,16 +17,6 @@ signaling.setConfig({
 
 
 wsserver.on("connection", (client, req)=>{
-	var ip = req.socket.remoteAddress
-	if (!ip) {
-		const forwadedFor = req.headers['x-forwarded-for']
-		if (header) {
-			ip = forwadedFor.split(',')[0].trim()
-		}
-		
-	}
-	
-	console.log(ip)
 	signaling.addNewClient(client)
 })
 
