@@ -31,13 +31,13 @@ function addNewClient(client){
 	
 	const metadata = {
 		client: client,
-		lastUpdateTime: utils.getNowMillis()
+		creationTime: utils.getNowMillis()
 	}
 
 	clients.set(id, metadata)
 
 	const res = new ResponseBuilder()
-	res.buildTypeInitial(id, metadata.lastUpdateTime)
+	res.buildTypeInitial(id, metadata.creationTime)
 	client.send(res.getResponse())
 
 	attachClientLifeChecker(client)
