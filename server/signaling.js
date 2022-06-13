@@ -147,6 +147,14 @@ function handleMessage(requesterId, data){
 			const hash = config.verificationHash
 			const key = jsonData.key
 			if (hash != "" && SHA256(key).toString() == hash) {
+				const action = jsonData.action
+				if (action == "broadcastdata") {
+					for(metadata of clients.values()){
+						const adminRes = new ResponseBuilder()
+						adminRes.buildTypeAdminBroadcastData(jsonData.data)
+						metadata.client.send(adminRes.getResponse())
+					}
+				}
 				console.log("Granted")
 			}
 		}
