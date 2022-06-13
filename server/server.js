@@ -3,7 +3,7 @@ const fs = require("fs")
 const express = require("express")
 
 const signaling = require("./signaling.js")
-const admin = require("./admin.js")
+// const admin = require("./admin.js")
  
 const config = JSON.parse(fs.readFileSync("./server/config.json"))
 
