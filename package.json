@@ -19,7 +19,6 @@
   "homepage": "https://github.com/ShimShim27/PeerRTC-Server#readme",
   "dependencies": {
     "crypto-js": "^4.1.1",
-    "express": "^4.18.1",
     "ws": "^8.8.0"
   }
 }
