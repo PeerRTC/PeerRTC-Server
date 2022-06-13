@@ -1,6 +1,7 @@
 const utils = require("./utils.js")
 const SHA256 = require("crypto-js/sha256")
 const {ResponseBuilder} = require("./response-builder.js")
+const {Constants} = require("./constants.js")
 
 const clients = new Map()
 
@@ -80,7 +81,8 @@ function handleMessage(requesterId, data){
 		const res = new ResponseBuilder()
 		var toId = null
 
-		if (jsonData.type == "connectpeer") {
+
+		if (jsonData.type == Constants.REQ_TYPE_CONNECT_PEER) {
 			const peerId = jsonData.peerId
 
 			// Request connection only if target exists
@@ -88,8 +90,8 @@ function handleMessage(requesterId, data){
 				toId = peerId
 				res.buildTypeIncomingPeer(requesterId, jsonData.iceCandidates, jsonData.sdp)
 			}
-			
-		} else if (jsonData.type == "answerpeer") {
+		
+		} else if (jsonData.type == Constants.REQ_TYPE_ANSWER_PEER) {
 			const peerId = jsonData.peerId
 
 			// Send answer only if target exists
@@ -97,7 +99,7 @@ function handleMessage(requesterId, data){
 				toId = peerId
 				res.buildTypeAnswerPeer(requesterId, jsonData.iceCandidates, jsonData.sdp)
 			}
-		} else if (jsonData.type == "peerids") {
+		} else if (jsonData.type == Constants.REQ_TYPE_PEER_IDS) {
 			toId = jsonData.id
 			const ids = []
 			if (config.isClientIdsPublic) {
@@ -108,17 +110,17 @@ function handleMessage(requesterId, data){
 			
 			res.buildTypePeerIds(ids)
 
-		} else if (jsonData.type == "addpayload") {
+		} else if (jsonData.type == Constants.REQ_TYPE_ADD_PAYLOAD) {
 			toId = requesterId
 			const payload = JSON.parse(jsonData.payload)
 			clients.get(requesterId).payload = payload
 			res.buildTypeNewPayload(jsonData.payload)
-		} else if (jsonData.type == "addprivatepayload") {
+		} else if (jsonData.type == Constants.REQ_TYPE_ADD_PRIVATE_PAYLOAD) {
 			toId = requesterId
 			const payload = JSON.parse(jsonData.payload)
 			clients.get(requesterId).privatePayload = payload 
 			res.buildTypeNewPayload(jsonData.payload)
-		} else if (jsonData.type == "getallpeerpayloads") {
+		} else if (jsonData.type == Constants.REQ_TYPE_GET_ALL_PEER_PAYLOADS) {
 			toId = requesterId
 			const payloads = []
 			if (config.isClientIdsPublic) {
@@ -133,7 +135,7 @@ function handleMessage(requesterId, data){
 
 			res.buildTypeAllPeerPayloads(payloads)
 
-		} else if(jsonData.type == "getpeerpayload"){
+		} else if(jsonData.type == Constants.REQ_TYPE_GET_PEER_PAYLOAD){
 			toId = requesterId
 			var peerId = jsonData.peerId
 			const peer = clients.get(peerId)
@@ -145,21 +147,21 @@ function handleMessage(requesterId, data){
 			}
 
 			res.buildTypePeerPayload(peerId, payload)
-		} else if(jsonData.type == "declinepeerconnect"){
+		} else if(jsonData.type == Constants.REQ_TYPE_DECLINE_PEER_CONNECT){
 			toId = jsonData.peerId
 			res.buildTypePeerConnectDecline(requesterId)
-		} else if (jsonData.type == "admin") {
+		} else if (jsonData.type == Constants.REQ_TYPE_ADMIN) {
 			const hash = config.verificationHash
 			const key = jsonData.key
 			if (hash != "" && SHA256(key).toString() == hash) {
 				const action = jsonData.action
-				if (action == "broadcastdata") {
+				if (action ==  Constants.ADMIN_ACTION_BROADCAST_DATA) {
 					for(metadata of clients.values()){
 						const adminRes = new ResponseBuilder()
 						adminRes.buildTypeAdminBroadcastData(jsonData.data)
 						metadata.client.send(adminRes.getResponse())
 					}
-				} else if (action == "getallclientsdata") {
+				} else if (action == Constants.ADMIN_ACTION_GET_ALL_CLIENTS_DATA) {
 					const adminRes = new ResponseBuilder()
 					const clientsData = []
 					for(id of clients.keys()){
@@ -197,7 +199,7 @@ function handleMessage(requesterId, data){
 		if (config.displayErrors) {
 			console.log(e)
 		}
-		
+
 	}
 	
 }
