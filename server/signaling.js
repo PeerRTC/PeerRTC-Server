@@ -40,10 +40,11 @@ function addNewClient(client){
 	res.buildTypeInitial(id, metadata.lastUpdateTime)
 	client.send(res.getResponse())
 
-	clientLifeChecker(client)
+	attachClientLifeChecker(client)
+	attachtMaxConnectTime(client)
 }
 
-function clientLifeChecker(client){
+function attachClientLifeChecker(client){
 	var alive = true
 	const interval = setInterval(()=>{
 		if (!alive) {
@@ -61,6 +62,16 @@ function clientLifeChecker(client){
 	client.on("pong", ()=>{
 		alive = true
 	})
+}
+
+
+function attachtMaxConnectTime(client){
+	const maxTime = config.clientMaxConnectionTime
+	if (typeof maxTime == "number") {
+		setTimeout(()=>{
+			client.close()
+		}, maxTime)
+	}
 }
 
 function handleMessage(requesterId, data){
