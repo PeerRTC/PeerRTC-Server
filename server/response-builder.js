@@ -6,11 +6,13 @@ class ResponseBuilder{
 	static RES_TYPE_ANSWER_PEER = "answerpeer"
 	static RES_TYPE_PEER_IDS = "peerids"
 	static RES_TYPE_NEW_PAYLOAD = "newpayload"
+	static RES_TYPE_NEW_PRIVATE_PAYLOAD = "newprivatepayload"
 	static RES_ALL_PEER_PAYLOADS = "allpeerpayloads"
 	static RES_PEER_PAYLOAD = "peerpayload"
 	static RES_PEER_CONNECT_DECLINE = "peerconnectdecline"
 	static RES_TYPE_ADMIN_BROADCAST_DATA = "broadcastdata"
 	static RES_TYPE_ADMIN_GET_ALL_CLIENTS_DATA = "getallclientsdata"
+
 
 	constructor(){
 		this.response = {}
@@ -62,6 +64,13 @@ class ResponseBuilder{
 	buildTypeNewPayload(payload){
 		const response = this.response
 		response.type = ResponseBuilder.RES_TYPE_NEW_PAYLOAD
+		response.payload = payload
+	}
+
+
+	buildTypeNewPayload(payload){
+		const response = this.response
+		response.type = ResponseBuilder.RES_TYPE_NEW_PRIVATE_PAYLOAD
 		response.payload = payload
 	}
 

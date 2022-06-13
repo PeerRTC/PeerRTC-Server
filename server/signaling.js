@@ -108,10 +108,15 @@ function handleMessage(requesterId, data){
 			
 			res.buildTypePeerIds(ids)
 
-		} else if (jsonData.type == "addPayload") {
+		} else if (jsonData.type == "addpayload") {
 			toId = requesterId
 			const payload = JSON.parse(jsonData.payload)
 			clients.get(requesterId).payload = payload
+			res.buildTypeNewPayload(jsonData.payload)
+		} else if (jsonData.type == "addprivatepayload") {
+			toId = requesterId
+			const payload = JSON.parse(jsonData.payload)
+			clients.get(requesterId).privatePayload = payload 
 			res.buildTypeNewPayload(jsonData.payload)
 		} else if (jsonData.type == "getallpeerpayloads") {
 			toId = requesterId
