@@ -2,7 +2,7 @@
   "name": "peerrtc-server",
   "version": "1.0.0",
   "description": "Signaling server for peer rtc",
-  "main": "/server/server.js",
+  "main": "./server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server/server.js"
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ShimShim27/PeerRTC-Server#readme",
   "dependencies": {
     "crypto-js": "^4.1.1",
+    "express": "^4.18.1",
     "ws": "^8.8.0"
   }
 }
