@@ -15,6 +15,7 @@ signaling.setConfig({
 	isClientIdsPublic: config.isClientIdsPublic,	// If true, all client ids are retrievable in the client side
 	clientMaxUnreachableTime: config.clientMaxUnreachableTime,	// milliseconds
 	clientMaxConnectionTime: config.clientMaxConnectionTime,
+	displayErrors: config.displayErrors,
 	verificationHash: config.verificationHash
 })
 

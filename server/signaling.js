@@ -193,7 +193,11 @@ function handleMessage(requesterId, data){
 
 
 	}catch(e){
-		console.log(e)
+
+		if (config.displayErrors) {
+			console.log(e)
+		}
+		
 	}
 	
 }
