@@ -179,7 +179,10 @@ function handleMessage(requesterId, data){
 					adminRes.buildTypeAdminGetAllClientsData(clientsData)
 					clients.get(requesterId).client.send(adminRes.getResponse())
 				}
-				console.log("Granted")
+				
+			} else{
+				toId = requesterId
+				res.buildTypeAdminActionDecline()
 			}
 		}
 
