@@ -12,7 +12,8 @@ const wsserver = new ws.Server({host:HOST, port: PORT})
 
 signaling.setConfig({
 	isClientIdsPublic: config.isClientIdsPublic,	// If true, all client ids are retrievable in the client side
-	clientMaxUnreachableTime: config.clientMaxUnreachableTime,	//milliseconds
+	clientMaxUnreachableTime: config.clientMaxUnreachableTime,	// milliseconds
+	clientMaxConnectionTime: config.clientMaxConnectionTime,
 	verificationHash: config.verificationHash
 })
 
