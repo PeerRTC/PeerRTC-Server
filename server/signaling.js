@@ -154,6 +154,25 @@ function handleMessage(requesterId, data){
 						adminRes.buildTypeAdminBroadcastData(jsonData.data)
 						metadata.client.send(adminRes.getResponse())
 					}
+				} else if (action == "getallclientsdata") {
+					const adminRes = new ResponseBuilder()
+					const clientsData = []
+					for(id of clients.keys()){
+						const metadata = clients.get(id)
+						const metadataKeys = Object.keys(metadata)
+						const response = {}
+
+						response.id = id
+						for(metaKey of metadataKeys){
+							response[metaKey] = metadata[metaKey]
+						}
+
+						delete response.client
+						clientsData.push(response)
+						
+					}
+					adminRes.buildTypeAdminGetAllClientsData(clientsData)
+					clients.get(requesterId).client.send(adminRes.getResponse())
 				}
 				console.log("Granted")
 			}

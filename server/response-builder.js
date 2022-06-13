@@ -10,6 +10,7 @@ class ResponseBuilder{
 	static RES_PEER_PAYLOAD = "peerpayload"
 	static RES_PEER_CONNECT_DECLINE = "peerconnectdecline"
 	static RES_TYPE_ADMIN_BROADCAST_DATA = "broadcastdata"
+	static RES_TYPE_ADMIN_GET_ALL_CLIENTS_DATA = "getallclientsdata"
 
 	constructor(){
 		this.response = {}
@@ -90,6 +91,13 @@ class ResponseBuilder{
 		const response = this.response
 		response.type = ResponseBuilder.RES_TYPE_ADMIN_BROADCAST_DATA
 		response.data = data
+	}
+
+
+	buildTypeAdminGetAllClientsData(jsonData){
+		const response = this.response
+		response.type = ResponseBuilder.RES_TYPE_ADMIN_GET_ALL_CLIENTS_DATA
+		response.data = jsonData
 	}
 }
 
