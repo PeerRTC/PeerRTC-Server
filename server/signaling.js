@@ -46,29 +46,33 @@ function addNewClient(client){
 }
 
 function attachClientLifeChecker(client){
-	var alive = true
-	const interval = setInterval(()=>{
-		if (!alive) {
-			client.close()
-			clearInterval(interval)
-		}
-		try{
-			client.ping()
-		}catch(e){
+	const clientMaxUnreachableTime = client.clientMaxUnreachableTime
+	if (!clientMaxUnreachableTime < 0) {
+		var alive = true
+		const interval = setInterval(()=>{
+			if (!alive) {
+				client.close()
+				clearInterval(interval)
+			}
+			try{
+				client.ping()
+			}catch(e){
 
-		}
-		alive = false
-	}, config.clientMaxUnreachableTime)
+			}
+			alive = false
+		}, config.clientMaxUnreachableTime)
 
-	client.on("pong", ()=>{
-		alive = true
-	})
+		client.on("pong", ()=>{
+			alive = true
+		})
+	}
+	
 }
 
 
 function attachtMaxConnectTime(client){
 	const maxTime = config.clientMaxConnectionTime
-	if (typeof maxTime == "number") {
+	if (!maxTime < 0) {
 		setTimeout(()=>{
 			client.close()
 		}, maxTime)
