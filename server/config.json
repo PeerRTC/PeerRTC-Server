@@ -3,7 +3,7 @@
 	"port": 1000,
 	"isClientIdsPublic": false,	
 	"clientMaxUnreachableTime": 30000,
-	"clientMaxConnectionTime": "",
+	"clientMaxConnectionTime": -1,
 	"displayErrors": true,
 	"verificationHash": ""
 	
