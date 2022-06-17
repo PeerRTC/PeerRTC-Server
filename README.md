@@ -11,7 +11,8 @@ the PeerRTC clients. This server can also be used as a temporay storage for clie
 1. Install [Node.js](https://nodejs.org/en/) first. Skip this step if already installed.
 2. Clone this [repository](https://github.com/ShimShim27/PeerRTC-Server).
 3. In command line, navigate to root directory of the newly downloaded repository.
-4. Start the server by entering `npm start` in the command line.
+4. Install all needed dependencies via `npm install` in the command line.
+5. Start the server by entering `npm start` in the command line.
 
 ## 🔧 Modifying configurations
 Server configurations can be modified in the `server/config.json` as found [here](https://github.com/ShimShim27/PeerRTC-Server/blob/main/server/config.json).
