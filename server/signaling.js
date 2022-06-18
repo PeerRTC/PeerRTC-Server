@@ -60,7 +60,7 @@ function attachClientLifeChecker(client){
 
 			}
 			alive = false
-		}, config.clientMaxUnreachableTime)
+		}, clientMaxUnreachableTime)
 
 		client.on("pong", ()=>{
 			alive = true
