@@ -1,21 +1,21 @@
 # PeerRTC-Server 💻
-Backend server for the [PeerRTC](https://github.com/ShimShim27/PeerRTC) module. This server is used as the signaling server for clients coming from
+Backend server for the [PeerRTC](https://github.com/PeerRTC/PeerRTC) module. This server is used as the signaling server for clients coming from
 the PeerRTC clients. This server can also be used as a temporay storage for client related data and payloads.
 
 ## ❗ Note
-* Add credits and attribution to this [repository](https://github.com/ShimShim27/PeerRTC-Server) when using the backend server.
+* Add credits and attribution to this [repository](https://github.com/PeerRTC/PeerRTC-Server) when using the backend server.
 * This module is still in beta phase and can be unstable. 
 * Source code contributions and bug reports are encouraged.
 
 ## ⚙️ Setup
 1. Install [Node.js](https://nodejs.org/en/) first. Skip this step if already installed.
-2. Clone this [repository](https://github.com/ShimShim27/PeerRTC-Server).
+2. Clone this [repository](https://github.com/PeerRTC/PeerRTC-Server).
 3. In command line, navigate to root directory of the newly downloaded repository.
 4. Install all needed dependencies via `npm install` in the command line.
 5. Start the server by entering `npm start` in the command line.
 
 ## 🔧 Modifying configurations
-Server configurations can be modified in the `server/config.json` as found [here](https://github.com/ShimShim27/PeerRTC-Server/blob/main/server/config.json).
+Server configurations can be modified in the `server/config.json` as found [here](https://github.com/PeerRTC/PeerRTC-Server/blob/main/server/config.json).
 <hr/>
 
 `host` : `string` <br/>
@@ -46,6 +46,6 @@ means unlimited maximum connection time. <br/>
 <hr/>
 
 `verificationHash` : `string` <br/>
-* The sha256 hash of the key that are used in admin related api in [PeerRTC](https://github.com/ShimShim27/PeerRTC) client. Setting
+* The sha256 hash of the key that are used in admin related api in [PeerRTC](https://github.com/PeerRTC/PeerRTC) client. Setting
 this flag to empty string means that admin related task are disabled. <br/>
 <hr/>
