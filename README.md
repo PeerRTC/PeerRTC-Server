@@ -1,6 +1,6 @@
 # PeerRTC-Server 💻
 Backend server for the [PeerRTC](https://github.com/PeerRTC/PeerRTC) module. This server is used as the signaling server for clients coming from
-the PeerRTC clients. This server can also be used as a temporay storage for client related data and payloads.
+the PeerRTC clients. This server can also be used as a temporary storage for client related data and payloads.
 
 ## ❗ Note
 * Add credits and attribution to this [website](https://peerrtc.github.io/) when using the backend server.
