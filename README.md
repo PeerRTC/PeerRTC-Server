@@ -41,6 +41,10 @@ means unlimited maximum unreachable time.<br/>
 means unlimited maximum connection time. <br/>
 <hr/>
 
+`allowPayloadStoring` : `boolean` <br/>
+* Whether to allow storing both [public](https://github.com/PeerRTC/PeerRTC#addpayload-method) and [private](https://github.com/PeerRTC/PeerRTC#addprivatepayload-method) payloads from clients. Set this to false if there is no plan of storing payloads to prevent unauthorized data storage. <br/>
+<hr/>
+
 `displayErrors` : `boolean` <br/>
 * Whether to display error messages when errors occur in command line. <br/>
 <hr/>
