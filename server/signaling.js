@@ -115,15 +115,21 @@ function handleMessage(requesterId, data){
 			res.buildTypePeerIds(ids)
 
 		} else if (jsonData.type == Constants.REQ_TYPE_ADD_PAYLOAD) {
-			toId = requesterId
-			const payload = JSON.parse(jsonData.payload)
-			clients.get(requesterId).payload = payload
-			res.buildTypeNewPayload(jsonData.payload)
+			if (config.allowPayloadStoring) {
+				toId = requesterId
+				const payload = JSON.parse(jsonData.payload)
+				clients.get(requesterId).payload = payload
+				res.buildTypeNewPayload(jsonData.payload)
+			}
+			
 		} else if (jsonData.type == Constants.REQ_TYPE_ADD_PRIVATE_PAYLOAD) {
-			toId = requesterId
-			const payload = JSON.parse(jsonData.payload)
-			clients.get(requesterId).privatePayload = payload 
-			res.buildTypeNewPayload(jsonData.payload)
+				if (config.allowPayloadStoring) {
+					toId = requesterId
+					const payload = JSON.parse(jsonData.payload)
+					clients.get(requesterId).privatePayload = payload 
+					res.buildTypeNewPayload(jsonData.payload)
+				}
+			
 		} else if (jsonData.type == Constants.REQ_TYPE_GET_ALL_PEER_PAYLOADS) {
 			toId = requesterId
 			const payloads = []

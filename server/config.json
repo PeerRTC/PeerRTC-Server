@@ -4,6 +4,7 @@
 	"isClientIdsPublic": false,	
 	"clientMaxUnreachableTime": -1,
 	"clientMaxConnectionTime": -1,
+	"allowPayloadStoring": false,
 	"displayErrors": true,
 	"verificationHash": ""
 	
