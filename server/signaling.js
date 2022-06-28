@@ -127,7 +127,7 @@ function handleMessage(requesterId, data){
 					toId = requesterId
 					const payload = JSON.parse(jsonData.payload)
 					clients.get(requesterId).privatePayload = payload 
-					res.buildTypeNewPayload(jsonData.payload)
+					res.buildTypeNewPrivatePayload(jsonData.payload)
 				}
 			
 		} else if (jsonData.type == Constants.REQ_TYPE_GET_ALL_PEER_PAYLOADS) {
