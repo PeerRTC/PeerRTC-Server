@@ -57,7 +57,7 @@ class ResponseBuilder{
 	}
 
 
-	buildTypeNewPayload(payload){
+	buildTypeNewPrivatePayload(payload){
 		const response = this.response
 		response.type = Constants.RES_TYPE_NEW_PRIVATE_PAYLOAD
 		response.payload = payload
